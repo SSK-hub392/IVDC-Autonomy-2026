@@ -178,10 +178,5 @@ I used OpenAi's ChatGPT to help brainstorm an initial set of explanations and co
 
 The research section also contains pointers to the various web sources for the OpenCV, Red Blob Games, MathWorks and HuggingFace Deep RL course which are good resources for understanding the core concepts involved in this project.
 
-I now need to thoroughly review the code and results, and ensure that I understand what it does.
 
-## Final Remarks
 
-This project covers a significant area of exploration for building up the systems needed for semi-autonomous vehicles, including perception, path planning and teaching it how to drive.
-
-The various implementations serve as a basis for further exploration into each of the three areas. Testing it further using the actual inputs and the Deep-ML platform are what I will need to do before finalizing submission.
