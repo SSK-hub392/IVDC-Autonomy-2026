@@ -1,0 +1,4 @@
+.venv/
+__pycache__/
+*.pyc
+PS1_Computer_Vision/outputs/.test_temp/
