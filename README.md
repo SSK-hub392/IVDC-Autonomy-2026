@@ -54,4 +54,4 @@ All 4 PS1 tests and 5 PS2 tests passed during preparation. The checks use genera
 
 ## AI acknowledgement
 
-AI tools helped with research, writing, and review of this submission. References are listed in the research documents.
+AI tools helped with research of this submission. References are listed in the research documents.
