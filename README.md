@@ -1,57 +1,61 @@
 # IVDC Autonomy 2026
 
-This repository contains simple Python examples and research answers for two IVDC Autonomy 2026 problem statements: lane detection and motion planning.
+Beginner examples for two autonomous-vehicle topics: finding lane boundaries in a road photo (PS1) and finding a route through a grid map (PS2). The attached induction document also describes PS3, but this repository covers PS1 and PS2 only. These examples are for learning; they are not software for controlling a real vehicle.
 
-## Folders
+## Project files
 
-```text
-PS1_Computer_Vision/       lane detection program, research answer, PDF, tests, and example images
-PS2_Motion_Planning/       BFS and A* program, research answer, PDF, tests, and grid maps
-```
+| Folder or file | Contents |
+| --- | --- |
+| `PS1_Computer_Vision/` | Lane detection code, the assignment's sample photo, explanations, and example outputs. |
+| `PS2_Motion_Planning/` | BFS and A* code, explanations, and example outputs. |
+| `requirements.txt` | Python libraries used by both programs. |
+| `PS1_Computer_Vision/research.md`, `PS2_Motion_Planning/research.md` | Editable assignment answers. PDF copies are in the same folders. |
 
-The editable research answers are in each problem statement folder. PDF copies are available for [PS1](./PS1_Computer_Vision/research.pdf) and [PS2](./PS2_Motion_Planning/research.pdf).
+## Install
 
-## Setup
-
-Use Python 3.10 or newer. From this project folder, install the required packages:
+Use Python 3.10 or newer. Open PowerShell (Windows) or Terminal (macOS/Linux) in this folder, then create a project-only environment and install the libraries:
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-## Programs
+On macOS/Linux, use these commands instead:
 
-PS1 accepts an image file as input. No real road test image was included with the assignment files available for this submission.
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+## Run a program
+
+PS1 uses the sample road photo included in the repository. You can replace its path with another `.jpg` or `.png` photo.
 
 ```powershell
-.venv\Scripts\python.exe PS1_Computer_Vision\lane_detection.py path\to\road_image.jpg
+.venv\Scripts\python.exe PS1_Computer_Vision\lane_detection.py PS1_Computer_Vision\images\provided_test_image.jpg
 .venv\Scripts\python.exe PS2_Motion_Planning\path_planning.py
 ```
 
-The programs save their demonstration images in their own `outputs` folders. PS1 saves processing steps and a lane mask. PS2 saves the BFS and A* paths and a comparison chart.
+On macOS/Linux:
 
-## Checks
+```bash
+.venv/bin/python PS1_Computer_Vision/lane_detection.py PS1_Computer_Vision/images/provided_test_image.jpg
+.venv/bin/python PS2_Motion_Planning/path_planning.py
+```
 
-Run the included checks with:
+PS1 saves intermediate pictures and the required black-lane, white-background bitmap in `PS1_Computer_Vision/outputs/`. PS2 saves maps showing explored cells and routes, plus a BFS/A* comparison chart in `PS2_Motion_Planning/outputs/`. See each folder's README for a code walkthrough and ideas to experiment with.
+
+## Run the included checks
 
 ```powershell
 .venv\Scripts\python.exe -m unittest discover -s PS1_Computer_Vision\tests
 .venv\Scripts\python.exe -m unittest discover -s PS2_Motion_Planning\tests
 ```
 
-All 4 PS1 tests and 5 PS2 tests passed during preparation. The checks use generated images and a small grid map.
+For macOS/Linux, replace `.venv\Scripts\python.exe` with `.venv/bin/python` and change the folder separators to `/`.
 
-## Summary
+## Limits and acknowledgement
 
-- **PS1:** Uses colour thresholds, Canny edges, a region of interest, and Hough line segments to estimate lane boundaries.
-- **PS2:** Compares breadth-first search (BFS) and A* on a four-direction grid. A* uses Manhattan distance.
+PS1 uses colour ranges and straight lines, so lighting, curves, worn paint, and camera angle can affect it. If one lane side is missing, it estimates that side. PS2 uses a small fixed grid, equal-cost moves, and four directions; its route is not a vehicle trajectory.
 
-## Limits
-
-- PS1 was not checked on a real road image. Fixed colour thresholds and straight-line fitting may fail on curves, shadows, or worn lane markings.
-- PS2 uses a small grid and does not model vehicle size, turning, speed, uncertainty, or moving obstacles.
-
-## AI acknowledgement
-
-AI tools helped with research of this submission. References are listed in the research documents.
+AI tools helped prepare parts of the code and beginner explanations and supported research. References are listed in the research documents.
